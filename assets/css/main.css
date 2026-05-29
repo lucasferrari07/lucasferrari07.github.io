@@ -201,10 +201,18 @@ textarea {
 }
 
 a {
-  -moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-  -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-  -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  -moz-transition:
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  -webkit-transition:
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  -ms-transition:
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  transition:
+    color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
   border-bottom: solid 1px #e4e4e4;
   color: inherit;
   text-decoration: none;
@@ -2606,10 +2614,18 @@ input[type="button"],
   -webkit-appearance: none;
   -ms-appearance: none;
   appearance: none;
-  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -moz-transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+  -webkit-transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+  -ms-transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
   background-color: #989898;
   border-radius: 5px;
   border: 0;
@@ -2744,191 +2760,62 @@ input[type="button"]:disabled,
 }
 
 .experience-timeline {
-  overflow: hidden;
+  overflow: visible;
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(4rem, 8vw, 8rem);
+  row-gap: 3.5rem;
+  align-items: start;
 }
 
 .experience-timeline article {
-  width: 50%;
-  padding-left: 100px;
-  float: right;
+  width: auto;
+  max-width: 30rem;
+  padding: 0;
+  margin: 0;
   position: relative;
-}
-
-.experience-timeline article:nth-child(2n) {
-  padding: 0 100px 0 0;
-}
-
-.experience-timeline article:nth-child(2n) article-content:before,
-.experience-timeline article:nth-child(2n) .year,
-.experience-timeline article:nth-child(2n):before {
-  left: auto;
-  right: -10px;
-}
-
-.experience-timeline article:nth-child(2n) article-content {
-  padding: 0 150px 0 0;
-}
-
-.experience-timeline article:nth-child(2n) article-content:before {
-  right: -92px;
-}
-
-.experience-timeline article:nth-child(2n) .year {
-  right: 0;
-}
-
-.experience-timeline article:nth-child(2n) .year:before {
-  right: auto;
-  left: 0;
-  border-left: none;
-  border-right: 20px solid #7cba01;
-  transform: rotate(-45deg);
-}
-
-.experience-timeline article:nth-child(2) {
-  margin-top: 200px;
+  text-align: left;
 }
 
 .experience-timeline article:nth-child(odd) {
-  margin: -30% 0 0;
+  grid-column: 1;
+  justify-self: start;
 }
 
 .experience-timeline article:nth-child(2n) {
-  margin-bottom: 80px;
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 4.5rem;
 }
 
-.experience-timeline article:first-child,
-.experience-timeline article:last-child:nth-child(2n) {
-  margin: 0;
+.experience-timeline article h5 {
+  margin-bottom: 1rem;
 }
 
-.experience-timeline article:nth-child(2n) .year {
-  border-color: #1ebad0;
-  color: #1ebad0;
-}
-
-.experience-timeline article:nth-child(2) .year:before {
-  border-right-color: #1ebad0;
-}
-
-.experience-timeline article:nth-child(2n) .title {
-  color: #1ebad0;
-}
-
-.experience-timeline article:nth-child(3n) .year {
-  border-color: #7cba01;
-  color: #7cba01;
-}
-
-.experience-timeline article:nth-child(3) .year:before {
-  border-left-color: #7cba01;
-}
-
-.experience-timeline article:nth-child(3n) .title {
-  color: #7cba01;
-}
-
-.experience-timeline article:nth-child(4n) .year {
-  border-color: #f8781f;
-  color: #f8781f;
-}
-
-.experience-timeline article:nth-child(4) .year:before {
-  border-right-color: #f8781f;
-}
-
-.experience-timeline article:nth-child(4n) .title {
-  color: #f8781f;
+.experience-timeline article .inner > :last-child {
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 1200px) {
   .experience-timeline {
-    overflow: visible;
-  }
-
-  .experience-timeline:before {
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: translateX(0);
-  }
-
-  .experience-timeline article:before,
-  .experience-timeline article:nth-child(2n):before {
-    top: 60px;
-    left: -9px;
-    transform: translateX(0);
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
   }
 
   .experience-timeline article,
   .experience-timeline article:nth-child(2n),
   .experience-timeline article:nth-child(odd) {
     width: 100%;
-    float: none;
+    max-width: none;
     text-align: center;
-    padding: 0;
-    margin: 0 0 10px;
+    justify-self: stretch;
+    margin-top: 0;
   }
 
-  .experience-timeline article-content,
-  .experience-timeline article:nth-child(2n) article-content {
-    padding: 0;
-  }
-
-  .experience-timeline article-content:before,
-  .experience-timeline article:nth-child(2n) article-content:before {
-    display: none;
-  }
-
-  .experience-timeline article:nth-child(2n) .year,
-  .experience-timeline .year {
-    position: relative;
-    transform: translateY(0);
-  }
-
-  .experience-timeline article:nth-child(2n) .year:before,
-  .experience-timeline .year:before {
-    border: none;
-    border-right: 20px solid #f54957;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    top: 50%;
-    left: -23px;
-    bottom: auto;
-    right: auto;
-    transform: rotate(0);
-  }
-
-  .experience-timeline article:nth-child(2n) .year:before {
-    border-right-color: #1ebad0;
-  }
-
-  .experience-timeline article:nth-child(3n) .year:before {
-    border-right-color: #7cba01;
-  }
-
-  .experience-timeline article:nth-child(4n) .year:before {
-    border-right-color: #f8781f;
-  }
-
-  .experience-timeline .inner-content {
-    padding: 10px;
-  }
-
-  .experience-timeline .year:before {
-    display: none;
-  }
-
-  .experience-timeline .year {
-    height: 100%;
-    line-height: 100%;
-    border: none;
-    box-shadow: none;
-  }
-
-  .experience-timeline article-content:before {
-    border-top: none;
+  .experience-timeline article:nth-child(2n),
+  .experience-timeline article:nth-child(odd) {
+    grid-column: auto;
   }
 }
 
